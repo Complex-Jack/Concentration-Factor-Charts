@@ -1,0 +1,44 @@
+/* Final cascade layer for the larger, more readable interface. */
+.hero > p { max-width: 430px; font-size: .78rem; }
+.eyebrow, .section-title span { font-size: .72rem; }
+.search { font-size: .66rem; }
+.search input { font-size: .85rem; }
+.filters button, .quiet { padding: 11px 14px; font-size: .78rem; }
+.app-grid { grid-template-columns: 370px 1fr; }
+.sidebar .panel, .engineering-note { padding: 22px; }
+.section-title > b { width: 33px; height: 33px; font-size: .7rem; }
+.section-title h2 { font-size: 1.15rem; }
+.case-picker { max-height: 32rem; overflow-y: auto; padding-right: 5px; }
+.case-select { grid-template-columns: 36px 1fr auto; gap: 9px; padding: 11px; }
+.case-select b { font-size: .68rem; }
+.case-select strong { font-size: .82rem; }
+.case-select small { font-size: .64rem; }
+.case-select i { width: 8px; height: 8px; }
+.input-grid { gap: 12px; }
+.input-grid label, .nominal { display: flex; flex-direction: column; font-size: .68rem; }
+.input-grid label > span { min-height: 2.8em; align-items: flex-start; }
+.input-grid label > input, .input-grid label > select { margin-top: auto; }
+.input-grid input, .input-grid select { padding: 10px; font-size: .88rem; }
+.hint, .caption { font-size: .66rem; line-height: 1.6; }
+.result-band > div { padding: 22px; }
+.result-band span { font-size: .64rem; }
+.result-band strong { font-size: clamp(1.15rem, 2.2vw, 1.8rem); }
+.result-band > div:first-child strong { font-size: 2.55rem; }
+.visual-grid article { padding: 22px; }
+.chart-key { font-size: .62rem; }
+.note-grid > p { font-size: 1.18rem; }
+.note-grid dt { font-size: .64rem; }
+.note-grid dd { font-size: .68rem; line-height: 1.6; }
+
+@media (max-width: 1100px) {
+  .app-grid { grid-template-columns: 1fr; }
+  .case-picker { max-height: 25rem; }
+}
+
+@media (max-width: 720px) {
+  .case-picker { max-height: 22rem; }
+  .section-title h2 { font-size: 1.05rem; }
+  .case-select strong { white-space: normal; }
+  .result-band strong { font-size: 1.1rem; }
+  .filters button { padding: 11px 5px; font-size: .7rem; white-space: nowrap; }
+}

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive explorer for the 17 theoretical stress-concentration cases in Shigley Table A-15.">
+  <title>Stress Concentration Atlas</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="readability.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Machine design · Table A-15</p>
+        <h1>Stress Concentration <span>Atlas</span></h1>
+      </div>
+      <p>Turn chart lookup into an engineering conversation: identify the feature, form the ratios, inspect the curve, and challenge the result.</p>
+    </header>
+
+    <section class="toolbar panel">
+      <label class="search">Find a case<input id="search" type="search" placeholder="Try “shaft”, “hole”, or “torsion”"></label>
+      <div class="filters" role="group" aria-label="Loading filters">
+        <button class="active" data-filter="all">All 17</button>
+        <button data-filter="tension">Tension</button>
+        <button data-filter="bending">Bending</button>
+        <button data-filter="torsion">Torsion</button>
+      </div>
+    </section>
+
+    <section class="app-grid">
+      <aside class="sidebar">
+        <section class="panel case-panel">
+          <div class="section-title"><b>01</b><div><span>Geometry + loading</span><h2 id="caseTitle">Case</h2></div></div>
+          <div id="casePicker" class="case-picker"></div>
+        </section>
+
+        <section class="panel inputs">
+          <div class="section-title"><b>02</b><div><span>Dimensional inputs</span><h2>Define the part</h2></div></div>
+          <div id="dimensionInputs" class="input-grid"></div>
+          <p class="hint">Inputs follow the chart: horizontal-axis ratio first, then the curve-family ratio. Use one consistent length unit.</p>
+        </section>
+      </aside>
+
+      <section class="main-column">
+        <section class="result-band panel">
+          <div>
+            <span id="factorLabel">THEORETICAL FACTOR · Kt</span>
+            <strong id="factorValue">—</strong>
+          </div>
+          <div>
+            <span>CHART COORDINATES</span>
+            <strong id="ratioSummary">—</strong>
+          </div>
+          <div id="statusCard" class="status">
+            <span>CHART STATUS</span>
+            <strong id="statusText">—</strong>
+          </div>
+        </section>
+
+        <section class="visual-grid">
+          <article class="panel geometry-card">
+            <div class="section-title"><b>03</b><div><span>Interpret the feature</span><h2>Geometry sketch</h2></div></div>
+            <svg id="geometry" viewBox="0 0 720 360" role="img" aria-label="Selected stress concentration geometry"></svg>
+            <p id="nominalNote" class="caption"></p>
+          </article>
+
+          <article class="panel chart-card">
+            <div class="section-title"><b>04</b><div><span>Read the trend</span><h2>Interpolated source curves</h2></div></div>
+            <svg id="chart" viewBox="0 0 720 360" role="img" aria-label="Stress concentration factor chart"></svg>
+            <div class="chart-key"><i></i><span>interpolated curve; gray lines are source curves</span><b></b><span>current design point</span></div>
+          </article>
+        </section>
+
+        <section class="panel engineering-note">
+          <div class="section-title"><b>05</b><div><span>Engineering check</span><h2>What the number means</h2></div></div>
+          <div class="note-grid">
+            <p id="interpretation"></p>
+            <dl>
+              <div><dt>Definition</dt><dd id="definition"></dd></div>
+              <div><dt>Use with fatigue</dt><dd>Do not substitute directly for Kf. Apply notch sensitivity: Kf = 1 + q(Kt − 1).</dd></div>
+              <div><dt>Escalate to FEA when</dt><dd>Geometry falls outside the chart, features interact, loading is combined, or local yielding is expected.</dd></div>
+            </dl>
+          </div>
+        </section>
+      </section>
+    </section>
+
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
